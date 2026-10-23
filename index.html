@@ -253,7 +253,7 @@
     { src: 'photos/olive-trees.jpg', alt: 'Three people looking up into an olive tree', parts: [t('south of France, learning olive oil from the tree up')] },
     { src: 'photos/spritz.jpg', alt: 'A friend laughing with a jug of spritz at a party', parts: [t('2026 world cup quarter-finals spritzes')] },
     { src: 'photos/padel.jpg', alt: 'A padel match seen from high in the stands of a packed stadium', parts: [t('Paris Major, Premier Padel, september 2026')] },
-    { src: 'photos/me.jpg', alt: 'Antoine in a cap working on a laptop by a window', parts: [t('me')] }
+    { src: 'photos/me.jpg', alt: 'Antoine in a cap working on a laptop by a window', parts: [t('me')], link: 'https://x.com/antoineduchein' }
   ];
 
   var ANSWERS = {
@@ -382,7 +382,9 @@
         if (x.href) { var a = document.createElement('a'); a.href = x.href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = x.text; a.style.color = 'var(--muted)'; cap.appendChild(a); }
         else cap.appendChild(document.createTextNode(x.text));
       });
-      f.appendChild(img); f.appendChild(cap);
+      if (p.link) { var w = document.createElement('a'); w.href = p.link; w.target = '_blank'; w.rel = 'noopener'; w.setAttribute('aria-label', 'tonio on x'); w.appendChild(img); f.appendChild(w); }
+      else f.appendChild(img);
+      f.appendChild(cap);
       $('gallery').appendChild(f);
     });
     shown += STEP;
